@@ -60,11 +60,13 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     async function loadFoods(): Promise<void> {
       let url = 'foods';
+
       if (selectedCategory || searchValue) {
         url += `?${selectedCategory ? `category=${selectedCategory}` : ''}${
           searchValue ? `&name_like=${searchValue}` : ''
         }`;
       }
+
       const response = await api.get(url);
       setFoods(response.data);
     }
